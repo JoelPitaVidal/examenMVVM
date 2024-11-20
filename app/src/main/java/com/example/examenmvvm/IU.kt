@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -35,7 +36,12 @@ import kotlinx.coroutines.delay
 fun IU(miViewModel: MyViewModel) {
     // para que sea mas facil la etiqueta del log
     // val TAG_LOG = "miDebug"
+    // Mostrar la cuenta atrás
+    val cuentaAtras by miViewModel.cuentaAtrasLiveData.observeAsState(initial = 5)
 
+    if (miViewModel.estadoLiveData.value == Estados.CONTANDO || miViewModel.estadoLiveData.value == Estados.ADIVINANDO) {
+        Text("Cuenta atrás: $cuentaAtras", fontSize = 20.sp)
+    }
     // botones en horizontal
     Column(
         modifier= Modifier.fillMaxWidth().fillMaxHeight().padding(20.dp),
@@ -56,6 +62,9 @@ fun IU(miViewModel: MyViewModel) {
 
                 // creo un boton amarillo
                 Boton(miViewModel, Colores.CLASE_AMARILLO)
+            }
+            Row {
+
             }
         }
         // creao boton Start

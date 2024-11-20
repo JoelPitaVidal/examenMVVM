@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
  */
 object Datos {
     var numero = 0
+    var Mostrar = 0
 }
 
 /**
@@ -34,7 +35,8 @@ enum class Colores(val color: Color, val color_suave: Color = Color.Transparent,
 enum class Estados(val start_activo: Boolean, val boton_activo: Boolean) {
     INICIO(start_activo = true, boton_activo = false),
     GENERANDO(start_activo = false, boton_activo = false),
-    ADIVINANDO(start_activo = false, boton_activo = true)
+    ADIVINANDO(start_activo = false, boton_activo = true),
+    CONTANDO(start_activo = false, boton_activo = true)
 }
 
 /**

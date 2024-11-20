@@ -24,10 +24,12 @@ class MyViewModel(): ViewModel() {
 
     // inicializamos variables cuando instanciamos
     init {
-        // estado inicial
+    // estado inicial
         Log.d(TAG_LOG, "Inicializamos ViewModel - Estado: ${estadoLiveData.value}")
     }
 
+    // Nuevo LiveData para la cuenta atrás:
+    val cuentaAtrasLiveData: MutableLiveData<Int> = MutableLiveData(5)
     /**
      * crear entero random
      */
@@ -37,6 +39,7 @@ class MyViewModel(): ViewModel() {
         _numbers.value = (0..3).random()
         Log.d(TAG_LOG, "creamos random ${_numbers.value} - Estado: ${estadoLiveData.value}")
         actualizarNumero(_numbers.value)
+        iniciarCuentaAtras()
     }
 
     fun actualizarNumero(numero: Int) {
@@ -46,6 +49,21 @@ class MyViewModel(): ViewModel() {
         estadoLiveData.value = Estados.ADIVINANDO
     }
 
+    /**
+     * creamos cuenta atras
+     */
+    fun iniciarCuentaAtras() {
+        viewModelScope.launch {
+            for (i in 5 downTo 1) {
+                cuentaAtrasLiveData.value = i
+                delay(1000)
+            }
+            // Si la cuenta atrás llega a 1 y el juego aún está en estado ADIVINANDO, reiniciar a INICIO
+            if (estadoLiveData.value == Estados.ADIVINANDO) {
+                estadoLiveData.value = Estados.INICIO
+            }
+        }
+    }
     /**
      * comprobar si el boton pulsado es el correcto
      * @param ordinal: Int numero de boton pulsado
