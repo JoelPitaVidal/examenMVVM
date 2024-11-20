@@ -53,7 +53,10 @@ class MyViewModel(): ViewModel() {
      * creamos cuenta atras
      */
     fun iniciarCuentaAtras() {
+        estadoLiveData.value == Estados.CONTANDO
+        // iniciamos cuenta atrás en 5 segundos
         viewModelScope.launch {
+            //inicia
             for (i in 5 downTo 1) {
                 cuentaAtrasLiveData.value = i
                 delay(1000)

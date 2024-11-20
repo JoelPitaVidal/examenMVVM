@@ -63,9 +63,6 @@ fun IU(miViewModel: MyViewModel) {
                 // creo un boton amarillo
                 Boton(miViewModel, Colores.CLASE_AMARILLO)
             }
-            Row {
-
-            }
         }
         // creao boton Start
         Boton_Start(miViewModel, Colores.CLASE_START)
