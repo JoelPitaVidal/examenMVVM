@@ -37,10 +37,10 @@ fun IU(miViewModel: MyViewModel) {
     // para que sea mas facil la etiqueta del log
     // val TAG_LOG = "miDebug"
     // Mostrar la cuenta atrás
+    // usamos observeAsState para que la IU se actualice cuando cambia el estado
     val cuentaAtras by miViewModel.cuentaAtrasLiveData.observeAsState(initial = 5)
 
     if (miViewModel.estadoLiveData.value == Estados.CONTANDO || miViewModel.estadoLiveData.value == Estados.ADIVINANDO) {
-        Text("Cuenta atrás: $cuentaAtras", fontSize = 20.sp)
     }
     // botones en horizontal
     Column(
@@ -63,6 +63,7 @@ fun IU(miViewModel: MyViewModel) {
                 // creo un boton amarillo
                 Boton(miViewModel, Colores.CLASE_AMARILLO)
             }
+            Text("Cuenta atrás: $cuentaAtras", fontSize = 20.sp)
         }
         // creao boton Start
         Boton_Start(miViewModel, Colores.CLASE_START)
