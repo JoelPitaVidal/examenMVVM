@@ -40,8 +40,6 @@ fun IU(miViewModel: MyViewModel) {
     // usamos observeAsState para que la IU se actualice cuando cambia el estado
     val cuentaAtras by miViewModel.cuentaAtrasLiveData.observeAsState(initial = 5)
 
-    if (miViewModel.estadoLiveData.value == Estados.CONTANDO || miViewModel.estadoLiveData.value == Estados.ADIVINANDO) {
-    }
     // botones en horizontal
     Column(
         modifier= Modifier.fillMaxWidth().fillMaxHeight().padding(20.dp),
@@ -63,6 +61,7 @@ fun IU(miViewModel: MyViewModel) {
                 // creo un boton amarillo
                 Boton(miViewModel, Colores.CLASE_AMARILLO)
             }
+                // mostramos la cuenta atrás
             Text("Cuenta atrás: $cuentaAtras", fontSize = 20.sp)
         }
         // creao boton Start

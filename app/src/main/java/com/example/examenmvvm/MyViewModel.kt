@@ -27,7 +27,6 @@ class MyViewModel(): ViewModel() {
     // estado inicial
         Log.d(TAG_LOG, "Inicializamos ViewModel - Estado: ${estadoLiveData.value}")
     }
-
     // Nuevo LiveData para la cuenta atrás:
     val cuentaAtrasLiveData: MutableLiveData<Int> = MutableLiveData(5)
     /**
@@ -41,14 +40,16 @@ class MyViewModel(): ViewModel() {
         actualizarNumero(_numbers.value)
         iniciarCuentaAtras()
     }
-
+    /**
+     * actualizar numero en datos
+     * @param numero: Int numero random
+     */
     fun actualizarNumero(numero: Int) {
         Log.d(TAG_LOG, "actualizamos numero en Datos - Estado: ${estadoLiveData.value}")
         Datos.numero = numero
         // cambiamos estado, por lo tanto la IU se actualiza
         estadoLiveData.value = Estados.ADIVINANDO
     }
-
     /**
      * creamos cuenta atras
      */
@@ -59,6 +60,8 @@ class MyViewModel(): ViewModel() {
             //inicia la cuenta atás regresiva desde 5
             for (i in 5 downTo 1) {
                 cuentaAtrasLiveData.value = i
+                Log.d(TAG_LOG, "Cuenta atrás: $i")
+                //Hacemos que la corrutina espere 1 segundo antes de continuar
                 delay(1000)
             }
             // Si la cuenta atrás llega a 1 y el juego aún está en estado ADIVINANDO, reiniciar a INICIO
