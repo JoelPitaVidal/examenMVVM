@@ -10,6 +10,7 @@ y le damos a cuentaAtrasLiveData.value el valor que tenga actualmente "i" para
 mostrarlo posteriormente por pantalla
 
 ´´´
+
  //inicia la cuenta atás regresiva desde 5
             for (i in 5 downTo 1) {
                 cuentaAtrasLiveData.value = i
@@ -17,13 +18,16 @@ mostrarlo posteriormente por pantalla
  //Hacemos que la corrutina espere 1 segundo antes de continuar
                 delay(1000)
             }
+            
 ´´´
 
 Luego en la función -`crearRandom` llamamos a esta función
 con el objetivo de que arranque nada mas pulsar el botón start
 
 ´´´
+
 iniciarCuentaAtras()
+
 ´´´
 En la clase IU seguimos unos pasos muy simples para poder mostrarla por pantalla:
 Lo primero que tenemos que hacer es crear una variable cuentaAtras e igualarla al 
@@ -32,7 +36,9 @@ Lo primero que tenemos que hacer es crear una variable cuentaAtras e igualarla a
 valor inicial de 5:
 
 ´´´
+
 val cuentaAtras by miViewModel.cuentaAtrasLiveData.observeAsState(initial = 5)
+
 ´´´
 
 Finalmente, debajo de los botones en horizontal y encima del botón start 
@@ -43,14 +49,16 @@ nota: la cuenta atrás se reinicia de nuevo pulsando el botón start,si termina
 permanece igualada a 1 hasta que el botón start se pulsa de nuevo
 
 ´´´
+
 Text("Cuenta atrás: $cuentaAtras", fontSize = 20.sp)
+
 ´´´
 
 ## Demostración de funcionamiento:
 En la siguiente imágen podemos ver como funciona la cuenta atrás, esta se activa al momento de pulsar
 el botón start y empieza a contar desde cinco hacia atrás, llegado al número 1 esta se detiene devolviendo el estado de la aplicación al inicio,reiniciando el juego
 
-![Texto alternativo](app/src/main/java/com/example/examenmvvm/imagenDeFuncionamiento.png)
+![Texto alternativo](app/src/main/java/com/example/examenmvvm/imagenDeFuncionamiento/cuentaAtrásFuncional.png)
 
 
 ## Planteamiento de mejora
