@@ -22,7 +22,7 @@ class MyViewModel(): ViewModel() {
     // usamos mutable, ya que la queremos modificar
     var _numbers = mutableStateOf(0)
 
-    // inicializamos variables cuando instanciamos
+    // inicializamos las variables cuando instanciamos
     init {
     // estado inicial
         Log.d(TAG_LOG, "Inicializamos ViewModel - Estado: ${estadoLiveData.value}")

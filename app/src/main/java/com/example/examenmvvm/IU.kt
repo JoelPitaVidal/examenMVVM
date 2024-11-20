@@ -39,7 +39,6 @@ fun IU(miViewModel: MyViewModel) {
     // Mostrar la cuenta atrás
     // usamos observeAsState para que la IU se actualice cuando cambia el estado
     val cuentaAtras by miViewModel.cuentaAtrasLiveData.observeAsState(initial = 5)
-
     // botones en horizontal
     Column(
         modifier= Modifier.fillMaxWidth().fillMaxHeight().padding(20.dp),
